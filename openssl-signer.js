@@ -5,7 +5,7 @@ module.exports = options => {
     return new Promise(function(resolve, reject) {
         options = options || {};
 
-        if (!options.content)
+        if (!options.content && !options.fileContentPath)
             reject('Invalid content.');
 
         if (!options.key)
