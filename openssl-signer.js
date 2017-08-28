@@ -15,13 +15,13 @@ module.exports = options => {
             reject('Invalid certificate.');
 
         //var commadText = 'C:\\OpenSSL-Win32\\bin\\openssl.exe smime -in %s -sign -signer %s -inkey %s -outform DER -nodetach';
-        var commadText = 'C:\\OpenSSL-Win32\\bin\\openssl.exe smime -in %s -sign -signer %s -inkey %s -out C:\\temp\\signed-data-2.txt';
+        var commadText = 'C:\\OpenSSL-Win32\\bin\\openssl.exe smime -in %s -sign -signer %s -inkey %s -out E:\\Guille\\github\\afip-login-cms\\signed-data-2.txt';
         var content = options.fileContentPath;
 
         if (options.content) {
-            // commadText = 'echo "%s" | C:\\OpenSSL-Win32\\bin\\openssl.exe smime -sign -signer %s -inkey %s -outform DER -nodetach';
-            commadText = 'echo %s | C:\\OpenSSL-Win32\\bin\\openssl.exe smime -sign -signer %s -inkey %s -out C:\\temp\\signed-data.txt';
-            content = options.content.replace(/[<]/g, '^<').replace(/[>]/g, '^>');
+            commadText = 'echo %s | C:\\OpenSSL-Win32\\bin\\openssl.exe smime -sign -signer %s -inkey %s -outform DER -nodetach';
+            // commadText = 'echo %s | C:\\OpenSSL-Win32\\bin\\openssl.exe smime -sign -signer %s -inkey %s -out E:\\Guille\\github\\afip-login-cms\\signed-data.txt';
+            content = options.content.replace(/[<]/g, '^^^<').replace(/[>]/g, '^^^>');
 
         }
 

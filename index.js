@@ -8,10 +8,9 @@ pem.config({
 });
 
 const config = {
-    content: '<loginTicketRequest><header><uniqueId>1</uniqueId><generationTime>2017-08-26T23:50:46</generationTime><expirationTime>2017-08-27T23:10:46</expirationTime></header><service>wsfe</service></loginTicketRequest>',
-    //fileContentPath: 'C:\\projects\\afip-login-cms\\LoginTicketRequest.xml',
-    key: 'C:\\projects\\afip-login-cms\\MiClavePrivada',
-    cert: 'C:\\projects\\afip-login-cms\\certificado.pem'
+    content: '<loginTicketRequest><header><uniqueId>1</uniqueId><generationTime>2017-08-28T08:50:46</generationTime><expirationTime>2017-08-29T07:50:46</expirationTime></header><service>wsfe</service></loginTicketRequest>',
+    key: 'E:\\Guille\\github\\afip-login-cms\\MiClavePrivada',
+    cert: 'E:\\Guille\\github\\afip-login-cms\\certificado.pem'
 };
 
 opensslSigner(config)
