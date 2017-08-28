@@ -14,14 +14,24 @@ module.exports = options => {
         if (!options.cert)
             reject('Invalid certificate.');
 
+        //var commadText = 'C:\\OpenSSL-Win32\\bin\\openssl.exe smime -in %s -sign -signer %s -inkey %s -outform DER -nodetach';
+        var commadText = 'C:\\OpenSSL-Win32\\bin\\openssl.exe smime -in %s -sign -signer %s -inkey %s -out C:\\temp\\signed-data-2.txt';
+        var content = options.fileContentPath;
+
+        if (options.content) {
+            // commadText = 'echo "%s" | C:\\OpenSSL-Win32\\bin\\openssl.exe smime -sign -signer %s -inkey %s -outform DER -nodetach';
+            commadText = 'echo %s | C:\\OpenSSL-Win32\\bin\\openssl.exe smime -sign -signer %s -inkey %s -out C:\\temp\\signed-data.txt';
+            content = options.content.replace(/[<]/g, '^<').replace(/[>]/g, '^>');
+
+        }
+
         var command = util.format(
-            'C:\\OpenSSL-Win32\\bin\\openssl.exe smime -in %s -sign -signer %s -inkey %s -outform DER -nodetach',
-            // options.content.replace(/["']/g, '\\"'),
-            options.fileContentPath,
+            commadText,
+            content,
             options.cert,
             options.key
         );
-
+        console.log(command);
         if (options.password)
             command += util.format(' -passin pass:%s', options.password);
 
